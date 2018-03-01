@@ -33,6 +33,7 @@ def quote_menu(jobs_arr, job_name = '')
                 print "*"
                 quote.email_quote
                 puts "*"
+                quote.delete_quote # deletes quote from local 
                 puts "Quote sent" 
                 puts "Press Enter for main menu"
                 gets              

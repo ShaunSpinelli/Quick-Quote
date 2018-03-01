@@ -14,13 +14,13 @@ class Quote
         table = Terminal::Table.new :title => "Quick Quote" do |t|
 
         t << ["Job:", "#{@jobs[:name]}"]
-        t.add_row ["Materials:", "$#{@jobs[:materials_cost].to_i}"]
+        t.add_row ["Materials Cost:", "$#{@jobs[:materials_cost].to_i}"]
         t << :separator
         t.add_row ["Labour:", "Hours: #{@jobs[:time].to_i}\nRate: $50/hour"]
         t.add_separator
         t.add_row ["Total Labour:", "$#{@jobs[:time] * 50}"]
         t.add_row ["Travel to #{location}:", "$#{@distance_cost}"]
-        t.add_row ["Total:", "$#{@distance_cost + @jobs[:materials_cost].to_i + (@jobs[:time] * 50)}"]
+        t.add_row ["Total:", "$#{(@distance_cost + @jobs[:materials_cost].to_i + (@jobs[:time] * 50)).round(2)}"]
 
         end
     end
@@ -33,6 +33,9 @@ class Quote
       puts @quote_1
     end
 
+    def delete_quote
+      File.delete('your_quote.txt')
+    end
 
     def email_quote
     g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
