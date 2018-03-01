@@ -13,14 +13,14 @@ class Quote
         @quote_1 =
         table = Terminal::Table.new :title => "Quick Quote" do |t|
 
-        t << ["Job:", "#{@jobs[0][:name]}"]
-        t.add_row ["Materials:", "$#{@jobs[0][:materials_cost].to_i}"]
+        t << ["Job:", "#{@jobs[:name]}"]
+        t.add_row ["Materials:", "$#{@jobs[:materials_cost].to_i}"]
         t << :separator
-        t.add_row ["Labour:", "Hours: #{@jobs[0][:time].to_i}\nRate: $50/hour"]
+        t.add_row ["Labour:", "Hours: #{@jobs[:time].to_i}\nRate: $50/hour"]
         t.add_separator
-        t.add_row ["Total Labour:", "$#{@jobs[0][:time] * 50}"]
+        t.add_row ["Total Labour:", "$#{@jobs[:time] * 50}"]
         t.add_row ["Travel to #{location}:", "$#{@distance_cost}"]
-        t.add_row ["Total:", "$#{@distance_cost + @jobs[0][:materials_cost].to_i + (@jobs[0][:time] * 50)}"]
+        t.add_row ["Total:", "$#{@distance_cost + @jobs[:materials_cost].to_i + (@jobs[:time] * 50)}"]
 
         end
     end
@@ -56,11 +56,15 @@ The Quick Quote team!")
     auth_token = 'b9c18d50b5f2bb3004b22c01e55f09f6'
 
     # set up a client to talk to the Twilio REST API
-    client = Twilio::REST::Client.new account_sid, auth_token
-    client.api.account.messages.create(
-    from: '+61428189153',
-    to: "#{@contact[0]}",
-    body: "#{@quote_1}"
-    )
+    begin
+      client = Twilio::REST::Client.new account_sid, auth_token
+      client.api.account.messages.create(
+      from: '+61428189153',
+      to: "#{@contact[0]}",
+      body: "#{@quote_1}"
+      )
+    rescue
+      puts "Text not sent: Invalid number"
+    end
   end
 end
