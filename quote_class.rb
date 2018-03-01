@@ -2,22 +2,25 @@ require 'mail'
 require 'twilio-ruby'
 require 'gmail_sender'
 
-location = "perth"
-distance_cost = 400
-jobs = [
-    {name:"Small shed", materials_cost: 100, time: 45}, # read and create array of jobs from txt using marshall
-    {name:"Big shed", materials_cost: 100, time: 45}
-]
 
+# !!! FOR TEST !!!
+# distance_cost = 400
+# location = "perth"
+# jobs = [
+#     {name:"Small shed", materials_cost: 100, time: 45}, # read and create array of jobs from txt using marshall
+#     {name:"Big shed", materials_cost: 100, time: 45}
+# ]
+
+# contact = ["+61436481999", "quickquoteruby@gmail.com"]
 
 class Quote
-    attr_accessor :jobs, :distance_cost, :location
+    attr_accessor :jobs, :distance_cost, :location, :contact
 
-    def initialize(jobs, distance_cost, location)
+    def initialize(jobs, distance_cost, location, contact)
         @jobs = jobs
         @distance_cost = distance_cost
         @location = location
-        # @user_email = user_email
+        @contact = contact
         @quote_1 =
         "Job:
  - #{@jobs[0][:name]}
@@ -42,7 +45,7 @@ class Quote
     g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
     # you can attach any number of files, but there are limits for total attachments size
     g.attach('/Users/claytonwaldock/Desktop/Quick-Quote-master/your_quote.txt')
-    g.send(:to => "quickquoteruby@gmail.com",
+    g.send(:to => "#{@contact[1]}",
            :subject => "Your Quick Quote",
            :content =>
 "Dear Client,
@@ -61,14 +64,15 @@ The Quick Quote team!")
     client = Twilio::REST::Client.new account_sid, auth_token
     client.api.account.messages.create(
     from: '+61428189153',
-    to: '+61436481999',
+    to: "#{@contact[0]}",
     body: "#{@quote_1}"
     )
   end
 end
 
-quote = Quote.new(jobs, distance_cost, location)
-quote.put_quote
-quote.text_quote
-quote.write_quote
-quote.email_quote
+# !!! FOR TEST !!!
+# quote = Quote.new(jobs, distance_cost, location, contact)
+# quote.put_quote
+# quote.text_quote
+# quote.write_quote
+# quote.email_quote
