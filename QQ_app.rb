@@ -1,4 +1,3 @@
-#require 'geocoder'
 require_relative 'quote_class'
 require_relative 'travel_class'
 
@@ -32,7 +31,7 @@ def quote_menu(jobs_arr)
         jobs_arr.each do |job| # check list for correct job
             if job.has_value?(input_job)
                 puts "What is your email"
-                email = gets.chomp# change
+                email = gets.chomp
                 puts "Whats is your cell number including"
                 print "+61"
                 phone = gets
@@ -42,9 +41,9 @@ def quote_menu(jobs_arr)
                 distance_cost =trip.travel_cost
                 puts distance_cost
                 puts "quote done"                
-                #quote = Quote.new(job,distance_cost,location,email) # change to contact info pass as array
-                #quote.text_quote
-                # #qoute.email
+                quote = Quote.new(job, distance_cost, location, contact_arr)
+                quote.text_quote
+                quote.email_quote
                 return trip                               
             end       
         end
