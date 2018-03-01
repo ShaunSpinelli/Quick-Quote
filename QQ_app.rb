@@ -6,11 +6,12 @@ jobs = Marshal.load File.read("job_types.txt")# import array from job_types.txt
 
 # Main program starts here
 loop do
-    puts "Welcome to Quick Quote"
-    puts "What would you like to do"
-    puts "Enter 1 for New Quote"
-    puts "Enter 2 to add a new Jobs type"
-    puts "Enter 3 to exit"
+    puts "Welcome to Quick Quote".center(50)
+    puts "**************************".center(50,"*")
+    puts "What would you like to do ?".center(50)
+    puts "Enter 1: New Quote".center(50)
+    puts "Enter 2: Add a new job type".center(50)
+    puts "Enter 3: Exit".center(50)
 
     user_option = gets.to_i
 

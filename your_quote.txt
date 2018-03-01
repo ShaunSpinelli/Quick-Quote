@@ -1,0 +1,8 @@
+Job:
+ - Big hole
+ - 0
+ - 10
+ Travel to perth:
+ - 4327.31
+ Totol:
+ - 4327.31

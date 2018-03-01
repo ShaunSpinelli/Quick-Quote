@@ -1,4 +1,4 @@
-# Option 1 Get Quote menu main logic done just need to intergrate qoutes
+# Option 1 Get Quote menu main
 def quote_menu(jobs_arr, job_name = '')
 
     loop do 
@@ -17,19 +17,26 @@ def quote_menu(jobs_arr, job_name = '')
                 location = gets.chomp
                 puts "What is your email"
                 email = gets.chomp
-                puts "Whats is your cell number including"
+                puts "Whats is your cell number"
                 print "+61"
-                phone = gets
+                phone = gets.chomp
+                puts "Quote being processed need four stars "
+                print "*"
                 contact_arr = [phone,email]
-                puts contact_arr
                 trip = Travel.new(location)
+                print "*"
                 distance_cost =trip.travel_cost
-                puts distance_cost
-                puts "quote done"                
+                #puts distance_cost
                 quote = Quote.new(job, distance_cost, location, contact_arr)
+                quote.write_quote
                 quote.text_quote
+                print "*"
                 quote.email_quote
-                return trip                               
+                puts "*"
+                puts "Quote sent" 
+                puts "Press Enter for main menu"
+                gets              
+                return                               
             end       
         end
         puts "The job '#{job_name}' does not exist. Would you like to creat this job? [Y/N]"
@@ -41,7 +48,7 @@ def quote_menu(jobs_arr, job_name = '')
     end
 end
 
-#Option 2 Add Job
+#Option 2 Add Job main menu
 def add_job(jobs_arr, job_name = '')
 
     if job_name == ''

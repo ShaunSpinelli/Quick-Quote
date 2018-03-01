@@ -9,9 +9,6 @@
 # job_read = Marshal.load File.read("job_types.txt")
 
 # puts job_read[0][:name]
-require_relative 'test2'
-
-show
 
 
 
