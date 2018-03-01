@@ -13,23 +13,22 @@ end
 
 
 # Option 1 Get Quote menu main logic done just need to intergrate qoutes
-def quote_menu(jobs_arr)
-    created = nil
+def quote_menu(jobs_arr, job_name = '')
 
-    puts "Enter Location"
-    location = gets.chomp
-    puts "Jobs List:"
-    
     loop do 
-        jobs_arr.each do |value| # print out list of jobs from array
-            puts "#{value[:name]}"
+        if job_name == ''
+            puts "Jobs List:"
+            jobs_arr.each do |value| # print out list of jobs from array
+                puts "#{value[:name]}"
+            end
+            puts "Enter Job" #need error handling here
+            job_name = gets.chomp.capitalize
         end
-
-        puts "Enter Job" #need error handling here
-        input_job = gets.chomp.capitalize
-        
+            
         jobs_arr.each do |job| # check list for correct job
-            if job.has_value?(input_job)
+            if job.has_value?(job_name)
+                puts "Enter Location"
+                location = gets.chomp
                 puts "What is your email"
                 email = gets.chomp
                 puts "Whats is your cell number including"
@@ -47,15 +46,22 @@ def quote_menu(jobs_arr)
                 return trip                               
             end       
         end
-        puts "No Job found, Try again"
+        puts "The job '#{job_name}' does not exist. Would you like to creat this job? [Y/N]"
+        if gets.downcase.chomp == "y"
+            puts ""
+            add_job(jobs_arr, job_name)
+            return
+        end
     end
 end
 
 #Option 2 Add Job
-def add_job(jobs_arr)
+def add_job(jobs_arr, job_name = '')
 
-    puts "Enter Job title"
-    job_name = gets.chomp.capitalize
+    if job_name == ''
+        puts "Enter Job name"
+        job_name = gets.chomp.capitalize
+    end    
     puts job_name
     puts "Enter materials cost"
     materials_cost = gets.to_i
@@ -66,14 +72,20 @@ def add_job(jobs_arr)
     jobs_converted = Marshal.dump(jobs_arr)
     File.open("job_types.txt", "w") {|f| f.write(jobs_converted)} # write jobs to txt file
     puts "#{job_name} Job Added"
-    
+    puts "Would you like to create quote? [Y/N]"
+    if gets.downcase.chomp == "y"
+        puts ""
+        jobs_arr_updated = Marshal.load File.read("job_types.txt")
+        quote_menu(jobs_arr_updated, job_name)
+        return
+    end
 end
 
 # Main program starts here
 puts "Welcome to Quick Quote"
 puts "What would you like to do"
 puts "Enter 1 for New Quote"
-puts "Enter 2 too add a new Jobs type"
+puts "Enter 2 to add a new Jobs type"
 
 user_option = gets.to_i
 

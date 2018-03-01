@@ -44,7 +44,7 @@ class Quote
     g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
     # you can attach any number of files, but there are limits for total attachments size
     g.attach('/Users/claytonwaldock/Desktop/Quick-Quote-master/your_quote.txt')
-    g.send(:to => "#{@contact[1]}",
+    g.send(:to =>"#{@contact[1]}",
            :subject => "Your Quick Quote",
            :content =>
 "Dear Client,

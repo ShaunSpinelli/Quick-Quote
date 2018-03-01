@@ -12,11 +12,11 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 git install geocoder
 ```
-* twilio-ruby
+* Twilio
 ```
 git install twilio-ruby
 ```
-* gmail_sender
+* Gmail sender
 ```
 git install gmail_sender
 ```
