@@ -3,9 +3,10 @@ def quote_menu(jobs_arr, job_name = '')
 
     loop do 
         if job_name == ''
-            puts "Jobs List:"
+            puts "Jobs List:".center(50)
+            puts "**************************".center(50,"*")                        
             jobs_arr.each do |value| # print out list of jobs from array
-                puts "#{value[:name]}"
+                puts "#{value[:name]}".center(50)
             end
             puts "Enter Job" #need error handling here
             job_name = gets.chomp.capitalize
@@ -26,13 +27,13 @@ def quote_menu(jobs_arr, job_name = '')
                 trip = Travel.new(location)
                 print "*"
                 distance_cost =trip.travel_cost
-                #puts distance_cost
                 quote = Quote.new(job, distance_cost, location, contact_arr)
                 quote.write_quote
                 quote.text_quote
                 print "*"
                 quote.email_quote
                 puts "*"
+                quote.delete_quote # deletes quote from local 
                 puts "Quote sent" 
                 puts "Press Enter for main menu"
                 gets              

@@ -18,8 +18,10 @@ loop do
     case user_option
     when 1
         quote_menu(jobs)
+        system("clear")
     when 2
         add_job(jobs)
+        system("clear")
     when 3
         break
     else
