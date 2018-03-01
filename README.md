@@ -21,9 +21,14 @@ git install twilio-ruby
 ```
 * [gmail_sender](https://github.com/dcadenas/gmail_sender)
 
-
 ```
 git install gmail_sender
+```
+
+* [Table Terminal](https://github.com/tj/terminal-table)
+
+```
+git install terminal-table
 ```
 ## Authors
 
@@ -36,4 +41,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* A big thanks to Geocoder, twilio and gmail_sender for their gem contributions.
+* A big thanks to Geocoder, Terminal Table, twilio and gmail_sender for their gem contributions.
