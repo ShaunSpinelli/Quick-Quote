@@ -14,11 +14,14 @@ You will also be required to provide you own Google API key for Geocoder, a Gmai
 ```
 git install geocoder
 ```
+
 * [twilio-ruby](https://github.com/twilio/twilio-ruby)
 ```
 git install twilio-ruby
 ```
 * [gmail_sender](https://github.com/dcadenas/gmail_sender)
+
+
 ```
 git install gmail_sender
 ```

@@ -10,7 +10,5 @@
 
 # puts job_read[0][:name]
 
-puts "Whats is your cell number including"
-print "+61"
-phone = gets
+
 
