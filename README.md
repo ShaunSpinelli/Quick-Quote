@@ -1,22 +1,24 @@
 # Quick Quote
 
-Quoting tool
+Quick Quote is a tool used to produce basic quotes on construction jobs based on the cost of material, labour and travel. The application will also produce a .txt file which can be sent to the applicant via text and email.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+You will also be required to provide you own Google API key for Geocoder, a Gmail account, as well as a custom twilio account. More information on these processes can be found in the links below.
+
 ### Gems Required
 
-* Geocoder
+* [Geocoder](https://github.com/alexreisner/geocoder)
 ```
 git install geocoder
 ```
-* twilio-ruby
+* [twilio-ruby](https://github.com/twilio/twilio-ruby)
 ```
 git install twilio-ruby
 ```
-* gmail_sender
+* [gmail_sender](https://github.com/dcadenas/gmail_sender)
 ```
 git install gmail_sender
 ```
@@ -27,11 +29,8 @@ git install gmail_sender
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* et
-
+* A big thanks to Geocoder, twilio and gmail_sender for their gem contributions.
