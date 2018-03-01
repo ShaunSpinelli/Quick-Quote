@@ -6,9 +6,11 @@ Quoting tool
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Gems Required
 
-What things you need to install the software and how to install them
+Geocoder
+twilio-ruby
+gmail_sender
 
 ```
 Give examples
@@ -72,8 +74,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Shaun Spinelli** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Clayton Waldock** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Shaun Spinelli** - *Initial work* - [GitHub](https://github.com/ShaunSpinelli)
+* **Clayton Waldock** - *Initial work* - [GitHub](https://github.com/CTWaldock)
 
 
 ## License

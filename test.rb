@@ -10,9 +10,7 @@
 
 # puts job_read[0][:name]
 
-until defined? x 
-    puts "hello"
-    x = 1
-end
-
+puts "Whats is your cell number including"
+print "+61"
+phone = gets
 
