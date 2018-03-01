@@ -9,9 +9,17 @@ These instructions will get you a copy of the project up and running on your loc
 ### Gems Required
 
 * Geocoder
+```
+git install geocoder
+```
 * twilio-ruby
+```
+git install twilio-ruby
+```
 * gmail_sender
-
+```
+git install gmail_sender
+```
 ## Authors
 
 * **Shaun Spinelli** - *Initial work* - [GitHub](https://github.com/ShaunSpinelli)
