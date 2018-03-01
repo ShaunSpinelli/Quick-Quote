@@ -1,4 +1,3 @@
-require 'mail'
 require 'twilio-ruby'
 require 'gmail_sender'
 
@@ -23,13 +22,13 @@ class Quote
         @contact = contact
         @quote_1 =
         "Job:
- - #{@jobs[0][:name]}
- - #{@jobs[0][:cost].to_i}
- - #{@jobs[0][:time].to_i}
+ - #{@jobs[:name]}
+ - #{@jobs[:cost].to_i}
+ - #{@jobs[:time].to_i}
  Travel to #{location}:
  - #{@distance_cost}
  Totol:
- - #{@distance_cost + @jobs[0][:cost].to_i}".ljust(20)
+ - #{@distance_cost + @jobs[:cost].to_i}".ljust(20)
     end
 
     def write_quote
