@@ -10,6 +10,9 @@
 
 # puts job_read[0][:name]
 
-
+until defined? x 
+    puts "hello"
+    x = 1
+end
 
 

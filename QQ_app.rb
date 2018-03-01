@@ -13,16 +13,19 @@ def get_quote(job, location)
 end
 
 
-# Option 1 Get Quote menu
+# Option 1 Get Quote menu main logic done just need to intergrate qoutes
 def quote_menu(jobs_arr)
+    created = nil
+
     puts "Enter Location"
     location = gets.chomp
     puts "Jobs List:"
-    jobs_arr.each do |value| # print out list of jobs from array
-        puts "#{value[:name]}"
-    end
+    
+    loop do 
+        jobs_arr.each do |value| # print out list of jobs from array
+            puts "#{value[:name]}"
+        end
 
-    while input_job == # need condotion to break loop if job has quote has been done
         puts "Enter Job" #need error handling here
         input_job = gets.chomp.capitalize
         
@@ -30,20 +33,17 @@ def quote_menu(jobs_arr)
             if job.has_value?(input_job)           
                 email = "" # change
                 trip = Travel.new(location)
-                
                 distance_cost =trip.travel_cost
                 puts distance_cost
                 puts "quote done"
+                return trip
                 #quote = Quote.new(job,distance_cost,location,email) # change to contact info pass as array
                 #quote.text_quote
-                break
                 # #qoute.email
-                # get_quote(job, location)                
-                
-            end
-            
+                # get_quote(job, location)                               
+            end       
         end
-        puts "didnt include"
+        puts "No Job found, Try again"
     end
 end
 

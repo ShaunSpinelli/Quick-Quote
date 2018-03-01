@@ -1,6 +1,6 @@
-# Project Title
+# Quick Quote
 
-One Paragraph of project description goes here
+Quoting tool
 
 ## Getting Started
 
@@ -72,9 +72,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Shaun Spinelli** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Clayton Waldock** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
