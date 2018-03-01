@@ -1,16 +1,6 @@
 require 'twilio-ruby'
 require 'gmail_sender'
-
-
-# !!! FOR TEST !!!
-# distance_cost = 400
-# location = "perth"
-# jobs = [
-#     {name:"Small shed", materials_cost: 100, time: 45}, # read and create array of jobs from txt using marshall
-#     {name:"Big shed", materials_cost: 100, time: 45}
-# ]
-
-# contact = ["+61436481999", "quickquoteruby@gmail.com"]
+require 'terminal-table'
 
 class Quote
     attr_accessor :jobs, :distance_cost, :location, :contact
@@ -21,14 +11,18 @@ class Quote
         @location = location
         @contact = contact
         @quote_1 =
-        "Job:
- - #{@jobs[:name]}
- - #{@jobs[:cost].to_i}
- - #{@jobs[:time].to_i}
- Travel to #{location}:
- - #{@distance_cost}
- Totol:
- - #{@distance_cost + @jobs[:cost].to_i}".ljust(20)
+        table = Terminal::Table.new :title => "Quick Quote" do |t|
+
+        t << ["Job:", "#{@jobs[0][:name]}"]
+        t.add_row ["Materials:", "$#{@jobs[0][:materials_cost].to_i}"]
+        t << :separator
+        t.add_row ["Labour:", "Hours: #{@jobs[0][:time].to_i}\nRate: $50/hour"]
+        t.add_separator
+        t.add_row ["Total Labour:", "$#{@jobs[0][:time] * 50}"]
+        t.add_row ["Travel to #{location}:", "$#{@distance_cost}"]
+        t.add_row ["Total:", "$#{@distance_cost + @jobs[0][:materials_cost].to_i + (@jobs[0][:time] * 50)}"]
+
+        end
     end
 
     def write_quote
@@ -44,7 +38,9 @@ class Quote
     g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
     # you can attach any number of files, but there are limits for total attachments size
     g.attach('your_quote.txt')
-    g.send(:to =>"#{@contact[1]}",
+
+    g.send(:to => "#{@contact[1]}",
+
            :subject => "Your Quick Quote",
            :content =>
 "Dear Client,
@@ -68,10 +64,3 @@ The Quick Quote team!")
     )
   end
 end
-
-# !!! FOR TEST !!!
-# quote = Quote.new(jobs, distance_cost, location, contact)
-# quote.put_quote
-# quote.text_quote
-# quote.write_quote
-# quote.email_quote
