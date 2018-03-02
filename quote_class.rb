@@ -2,14 +2,18 @@ require 'twilio-ruby'
 require 'gmail_sender'
 require 'terminal-table'
 
+# class to generate quote and send to client via text and email
 class Quote
     attr_accessor :jobs, :distance_cost, :location, :contact
 
+    # set variables for class
     def initialize(jobs, distance_cost, location, contact)
         @jobs = jobs
         @distance_cost = distance_cost
         @location = location
         @contact = contact
+
+        # table template for quote
         @quote_1 =
         table = Terminal::Table.new :title => "Quick Quote" do |t|
 
@@ -25,13 +29,18 @@ class Quote
         end
     end
 
+    # writes quote to .txt file
     def write_quote
       open('your_quote.txt', 'w') { |f| f << "#{@quote_1}" }
     end
 
+    # puts a copy of quote on screne for user
     def put_quote
       puts @quote_1
     end
+
+
+    # emails quote to client
 
     def email_quote
       g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
@@ -53,6 +62,8 @@ class Quote
         #save your quoute to desktop
       end
   end
+
+  # sends quote to client as a txt message
   def text_quote
     account_sid = 'ACf503a3a205fd784b4e8a185214772cbb'
     auth_token = 'b9c18d50b5f2bb3004b22c01e55f09f6'
