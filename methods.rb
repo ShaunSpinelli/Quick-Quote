@@ -1,19 +1,19 @@
-# Option 1 Get Quote menu main
+#Option 1 Get Quote menu main
 def quote_menu(jobs_arr, job_name = '')
 
     loop do 
         if job_name == ''
             puts "Jobs List:".center(50)
             puts "**************************".center(50,"*")                        
-            jobs_arr.each do |value| # print out list of jobs from array
+            jobs_arr.each do |value| #print out list of jobs from array
                 puts "#{value[:name]}".center(50)
             end
             puts "Enter Job" #need error handling here
             job_name = gets.chomp.capitalize
         end
             
-        jobs_arr.each do |job| # check list for correct job
-            if job.has_value?(job_name)
+        jobs_arr.each do |job| #check list for correct job
+            if job.has_value?(job_name) #logic on  for creating actual quaote
                 puts "Enter Location"
                 location = gets.chomp
                 puts "What is your email"
@@ -27,7 +27,7 @@ def quote_menu(jobs_arr, job_name = '')
                 trip = Travel.new(location)
                 print "*"
                 distance_cost =trip.travel_cost
-                quote = Quote.new(job, distance_cost, location, contact_arr)
+                quote = Quote.new(job, distance_cost, location, contact_arr) 
                 quote.write_quote
                 quote.text_quote
                 print "*"
@@ -39,7 +39,7 @@ def quote_menu(jobs_arr, job_name = '')
                 return                               
             end       
         end
-        puts "The job '#{job_name}' does not exist. Would you like to creat this job? [Y/N]"
+        puts "The job '#{job_name}' does not exist. Would you like to create this job? [Y/N]"
         if gets.downcase.chomp == "y"
             puts ""
             add_job(jobs_arr, job_name)
@@ -60,7 +60,7 @@ def add_job(jobs_arr, job_name = '')
     materials_cost = gets.to_i
     print "Enter labour time:"
     labour_time = gets.to_i
-
+    # adds hash to jobs array
     jobs_arr.push({name: job_name, materials_cost: materials_cost, time: labour_time})
 
     puts "#{job_name} Job Added"
@@ -75,18 +75,18 @@ def add_job(jobs_arr, job_name = '')
 end
 
 def edit_job(jobs_arr)
-
+    # methods allows user to upadate inforamtion on job and delete job
     puts "Jobs List:".center(50)
     puts "**************************".center(50,"*")                        
-    jobs_arr.each do |value| # print out list of jobs from array
+    jobs_arr.each do |value| #print out list of jobs from array
         puts "#{value[:name]}".center(50)
     end
-    puts "Enter Job you would like to edit" #need error handling here
+    puts "Enter Job you would like to edit" 
     job_name = gets.chomp.capitalize
         
-    arr_position = 0
+    arr_position = 0 #tracks job postion in array so it can be deleted
 
-    jobs_arr.each do |job| # check list for correct job
+    jobs_arr.each do |job| #check list for correct job
         if job.has_value?(job_name)
             # edit job
             puts "What would you like to hours"
@@ -117,19 +117,18 @@ def edit_job(jobs_arr)
                 puts "Item deleted"
             else
                 puts "Wrong selection"
-                puts "Enter 1, 2, 3"
-            end
-            puts "Press Enter for main menu"
-            gets              
-            return                                   
+                puts "Enter 1, 2, 3, 4"
+            end                                  
         end            
         arr_position += 1
     end
 
-    puts "The job '#{job_name}' does not exist. Would you like to creat this job? [Y/N]"
+    puts "Would you like to create a quote for the upadated job? Enter [Y]"
+    puts  "Enter any other key for main menu"
+
     if gets.downcase.chomp == "y"
         puts ""
-        add_job(jobs_arr, job_name)
+        quote_menu(jobs_arr, job_name)
         return
     else
         return

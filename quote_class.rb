@@ -34,11 +34,12 @@ class Quote
       open('your_quote.txt', 'w') { |f| f << "#{@quote_1}" }
     end
 
-    # puts a copy of quote on screen for user
+    # puts a copy of quote on screen for user amd opens quote in new window
     def put_quote
       puts @quote_1
       file_to_open = File.expand_path('your_quote.txt')
       system %{cmd /c "start #{file_to_open}"}
+  
     end
 
 
