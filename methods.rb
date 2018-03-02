@@ -33,7 +33,7 @@ def quote_menu(jobs_arr, job_name = '')
                 print "*"
                 quote.email_quote
                 puts "*" 
-                puts "Quote sent" 
+                puts quote.put_quote 
                 puts "Press Enter for main menu"
                 gets              
                 return                               
@@ -67,7 +67,7 @@ def add_job(jobs_arr, job_name = '')
     puts "Would you like to create quote? [Y/N]"
     if gets.downcase.chomp == "y"
         puts ""
-        quote_menu(jobs_arr_updated, job_name)
+        quote_menu(jobs_arr, job_name)
         return
     else
         return    
@@ -100,15 +100,17 @@ def edit_job(jobs_arr)
                 print "Enter new name:"
                 update_name = gets.chomp.capitalize
                 job[:name] = update_name
+                puts "Name updated"
             when 2# edit materials cost
                 print "Enter new materials cost: $"
                 update_materials_cost = gets.to_i
                 job[:materials_cost] = update_materials_cost
+                puts "Materials cost updated"
             when 3 #edit hours
                 print "Enter new hours:"
                 update_hours = gets.chomp.to_i
                 job[:time] = update_hours
-                puts jobs_arr
+                puts "Time updated"
             when 4 #delete
                 jobs_arr[arr_position] = nil
                 jobs_arr.compact!
