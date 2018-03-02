@@ -8,6 +8,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 You will also be required to provide you own Google API key for Geocoder, a Gmail account, as well as a custom twilio account. More information on these processes can be found in the links below.
 
+##### Main app runs from QQ_app.rb
+
 ### Gems Required
 
 * [Geocoder](https://github.com/alexreisner/geocoder)
