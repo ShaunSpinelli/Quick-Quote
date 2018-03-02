@@ -38,22 +38,25 @@ class Quote
     end
 
     def email_quote
-    g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
-    # you can attach any number of files, but there are limits for total attachments size
-    g.attach('your_quote.txt')
+      g = GmailSender.new("quickquoteruby@gmail.com", "HelloWorld123")
+      # you can attach any number of files, but there are limits for total attachments size
+      g.attach('your_quote.txt')
+      begin
+        g.send(:to => "#{@contact[1]}",
 
-    g.send(:to => "#{@contact[1]}",
+              :subject => "Your Quick Quote",
+              :content =>
+    "Dear Client,
 
-           :subject => "Your Quick Quote",
-           :content =>
-"Dear Client,
+    please find attatched your own personal Quick Quote.
 
-please find attatched your own personal Quick Quote.
-
-Best wishes,
-The Quick Quote team!")
-    end
-
+    Best wishes,
+    The Quick Quote team!")
+      rescue
+        puts "No internet: Email can be sent"
+        #save your quoute to desktop
+      end
+  end
   def text_quote
     account_sid = 'ACf503a3a205fd784b4e8a185214772cbb'
     auth_token = 'b9c18d50b5f2bb3004b22c01e55f09f6'

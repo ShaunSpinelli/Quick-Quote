@@ -11,7 +11,8 @@ loop do
     puts "What would you like to do ?".center(50)
     puts "Enter 1: New Quote".center(50)
     puts "Enter 2: Add a new job type".center(50)
-    puts "Enter 3: Exit".center(50)
+    puts "Enter 3: Too edit job".center(50)
+    puts "Enter 4: Exit".center(50)
 
     user_option = gets.to_i
 
@@ -23,6 +24,10 @@ loop do
         add_job(jobs)
         system("clear")
     when 3
+        edit_job(jobs)
+    when 4
+        jobs_converted = Marshal.dump(jobs)
+        File.open("job_types.txt", "w") {|f| f.write(jobs_converted)} # write jobs to txt file
         break
     else
         puts "Wrong selection"
