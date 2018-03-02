@@ -44,6 +44,8 @@ def quote_menu(jobs_arr, job_name = '')
             puts ""
             add_job(jobs_arr, job_name)
             return
+        else
+            return
         end
     end
 end
