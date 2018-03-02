@@ -33,7 +33,7 @@ def quote_menu(jobs_arr, job_name = '')
                 print "*"
                 quote.email_quote
                 puts "*" 
-                puts quote.put_quote 
+                quote.put_quote 
                 puts "Press Enter for main menu"
                 gets              
                 return                               
