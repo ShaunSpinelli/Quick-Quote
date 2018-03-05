@@ -37,9 +37,6 @@ git install terminal-table
 * **Shaun Spinelli** - *Initial work* - [GitHub](https://github.com/ShaunSpinelli)
 * **Clayton Waldock** - *Initial work* - [GitHub](https://github.com/CTWaldock)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
